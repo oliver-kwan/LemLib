@@ -19,8 +19,8 @@ Motors should be created outside of a function, near the top of the file.
 ```
 
 ```cpp
-pros::MotorGroup left_motors({1, 2, 3}); // left motors on ports 1, 2, 3
-pros::MotorGroup right_motors({4, 5, 6}); // right motors on ports 4, 5, 6
+pros::MotorGroup left_motor_group({1, 2, 3}); // left motors on ports 1, 2, 3
+pros::MotorGroup right_motor_group({4, 5, 6}); // right motors on ports 4, 5, 6
 ```
 
 ```{tip}
@@ -41,8 +41,8 @@ This needs to be done for all motors on the drivetrain
 Now, let's update our configuration. If a motor is reversed, it has a negative port. If it's forwards (not reversed), it has a positive port:
 
 ```cpp
-pros::MotorGroup left_motors({-1, 2, -3}); // left motors on ports 1 (reversed), 2 (forwards), and 3 (reversed)
-pros::MotorGroup right_motors({4, -5, 6}); // right motors on ports 4 (forwards), 5 (reversed), and 6 (forwards)
+pros::MotorGroup left_motor_group({-1, 2, -3}); // left motors on ports 1 (reversed), 2 (forwards), and 3 (reversed)
+pros::MotorGroup right_motor_group({4, -5, 6}); // right motors on ports 4 (forwards), 5 (reversed), and 6 (forwards)
 ```
 
 Now, we need to specify what cartridge is used by every motor. The cartridge can be checked by looking at the area below the shaft of the motor. A motor can have one of three cartridges:
@@ -56,8 +56,8 @@ Now, we need to specify what cartridge is used by every motor. The cartridge can
 We need to specify the cartridge configuration in code as well:
 
 ```cpp
-pros::MotorGroup left_motors({-1, 2, -3}, pros::MotorGearset::blue); // left motors use 600 RPM cartrifges
-pros::MotorGroup right_motors({4, -5, 6}, pros::MotorGearset::green); // right motors use 200 RPM cartridges
+pros::MotorGroup left_motor_group({-1, 2, -3}, pros::MotorGearset::blue); // left motors use 600 RPM cartrifges
+pros::MotorGroup right_motor_group({4, -5, 6}, pros::MotorGearset::green); // right motors use 200 RPM cartridges
 ```
 
 Now that our motors are fully configured, we need to pass them to LemLib. We can do this through a helper class: `Drivetrain`. It needs the following information:
